@@ -13,12 +13,13 @@ int maxProfit(vector<int> &prices,int index,int buyornot,vector<vector<int>> &dp
     int profit = 0;
     if(buyornot)
     {
+        // profit = s.p - c.p here we are adding -c.p therefore -prices[index]
         int buy = -prices[index]+maxProfit(prices,index+1,0,dp);
         int notbuy = maxProfit(prices,index+1,1,dp);
         profit = max(buy,notbuy);
     }
     else
-    {
+    {  
         int sell = prices[index]+maxProfit(prices,index+1,1,dp);
         int notsell = maxProfit(prices,index+1,0,dp);
         profit = max(sell,notsell);
